@@ -25,7 +25,7 @@ public class AtmosfearEdit {
      */
     public static void main(String[] args) throws IOException {
         
-        File dir = new File("weathers/");
+        File dir = new File("input/");
         String[] ficheros = dir.list();
         for (int i = 0; i < ficheros.length; i++) {
 //            System.out.println(ficheros[i].toString());
@@ -34,7 +34,7 @@ public class AtmosfearEdit {
 //        
 //        cr.close();
         for (String fichero : ficheros) {
-            try (BufferedReader br = new BufferedReader(new FileReader("weathers/"+fichero))) {
+            try (BufferedReader br = new BufferedReader(new FileReader("input/"+fichero))) {
                 
                 String line;String input = "";
 
@@ -50,7 +50,7 @@ public class AtmosfearEdit {
                     input = input.replaceAll("sun_shafts_intensity             = 0.[0,4,5,6,7,8,9][0-9][0-9][0-9][0-9]", "sun_shafts_intensity             = 0.30000");
 //                    input = input.replaceAll("sun_shafts_intensity             = 0.[0-9][0-9][0-9][0-9][0-9]", "sun_shafts_intensity             = 0.50000");
 
-                    try (FileOutputStream fileOut = new FileOutputStream(fichero)) {
+                    try (FileOutputStream fileOut = new FileOutputStream("output/"+fichero)) {
                         fileOut.write(input.getBytes());
                     }
                 
